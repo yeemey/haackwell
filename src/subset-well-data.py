@@ -20,5 +20,9 @@ df = df[~df["WATERSRC"].str.contains("^rain", case=False)]
 df["WATERTECH"] = df["WATERTECH"].fillna("Not recorded")
 df = df[~df["WATERTECH"].str.contains("^rain", case=False)]
 
+# Extract "Breakdown year" from "STATUS" column
+df["STATUS"] = df["STATUS"].fillna("Not recorded")
+df["BKDWN_YEAR"] = df["STATUS"].str.extract("(\d{4,})")
+
 # Write this modified data to a new CSV file.
 df.to_csv('./../dat/well-data-2001-2015-no-rainwater.csv', index=False)
