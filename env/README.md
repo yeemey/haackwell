@@ -26,3 +26,4 @@ After activating the environment, run the Jupyter notebook, and change kernels. 
 - geopandas
 - basemap
 - nltk
+- pydap

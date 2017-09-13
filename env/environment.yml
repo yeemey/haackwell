@@ -13,3 +13,4 @@ dependencies:
     - geopandas
     - basemap
     - nltk
+    - pydap
