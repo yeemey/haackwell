@@ -28,5 +28,10 @@ df["BKDWN_YEAR"] = df["STATUS"].str.extract("(\d{4,})")
 no_bkdwn = df.BKDWN_YEAR.isnull()
 df["BKDWN_YEAR"][no_bkdwn] = df["RPT_YEAR"][no_bkdwn]
 
-# Write this modified data to a new CSV file.
-df.to_csv('./../dat/well-data-2001-2015-no-rainwater.csv', index=False)
+LL = (26., -4.)  # Lower left corner of bounding box.
+UR = (44., 13.)  # Upper right corner of bounding box
+df = df[(df.LAT_DD > LL[1]) & (df.LAT_DD < UR[1]) &
+        (df.LONG_DD > LL[0]) & (df.LONG_DD < UR[0])]
+
+# # Write this modified data to a new CSV file.
+df.to_csv('./../dat/well-data-2001-2015-no-rainwater-clipped.csv', index=False)
